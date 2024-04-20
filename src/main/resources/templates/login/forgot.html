@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<div th:replace="fragment/layout::head"></div>
+	</head>
+
+	<body>
+	<div th:replace="fragment/layout::header"></div>
+
+		<section class="login first grey">
+			<div class="container">
+				<div class="box-wrapper">				
+					<div class="box box-border">
+						<div class="box-body">
+							<h4>Forgot Password</h4>
+							<form>
+								<div class="form-group">
+									<label>Email</label>
+									<input type="email" name="email" class="form-control">
+								</div>
+								<div class="form-group text-right">
+									<button class="btn btn-primary btn-block">Reset Password</button>
+								</div>
+								<div class="form-group text-center">
+									<span class="text-muted">Back to login?</span> <a href="login.html">Login</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div th:replace="fragment/layout::footer"></div>
+
+	<script th:src="@{/js/jquery.js}"></script>
+	<script th:src="@{/js/jquery.migrate.js}"></script>
+	<script th:src="@{/scripts/bootstrap/bootstrap.min.js}"></script>
+	<script>var $target_end = $(".best-of-the-week");</script>
+	<script th:src="@{/scripts/jquery-number/jquery.number.min.js}"></script>
+	<script th:src="@{/scripts/owlcarousel/dist/owl.carousel.min.js}"></script>
+	<script th:src="@{/scripts/magnific-popup/dist/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/scripts/easescroll/jquery.easeScroll.js}"></script>
+	<script th:src="@{/scripts/sweetalert/dist/sweetalert.min.js}"></script>
+	<script th:src="@{/scripts/toast/jquery.toast.min.js}"></script>
+	<script th:src="@{/js/demo.js}"></script>
+	<script th:src="@{/js/e-magz.js}" ></script>	</body>
+</html>

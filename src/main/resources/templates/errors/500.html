@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<div th:replace="fragment/layout::head"></div>
+	</head>
+
+	<body>
+	<div th:replace="fragment/layout::header"></div>
+
+		<section class="not-found">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="code">
+							500
+						</div>
+						<h1>Internal Server Error</h1>
+						<p class="lead">Something has happened and we are fixing it, come back later.</p>
+						<div class="search-form">							
+							<form>
+								<div class="form-group">
+									<div class="input-group">
+										<input type="text" name="q" class="form-control" placeholder="Type something ...">
+										<div class="input-group-btn">
+											<button class="btn btn-primary">Search</button>
+										</div>
+									</div>
+								</div>
+							</form>								
+							<div class="link">
+								or <a href="index.html">back to home</a>.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	<div th:replace="fragment/layout::footer"></div>
+
+	<!-- JS -->
+	<!-- JS -->
+	<script th:src="@{/js/jquery.js}"></script>
+	<script th:src="@{/js/jquery.migrate.js}"></script>
+	<script th:src="@{/scripts/bootstrap/bootstrap.min.js}"></script>
+	<script>var $target_end = $(".best-of-the-week");</script>
+	<script th:src="@{/scripts/jquery-number/jquery.number.min.js}"></script>
+	<script th:src="@{/scripts/owlcarousel/dist/owl.carousel.min.js}"></script>
+	<script th:src="@{/scripts/magnific-popup/dist/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/scripts/easescroll/jquery.easeScroll.js}"></script>
+	<script th:src="@{/scripts/sweetalert/dist/sweetalert.min.js}"></script>
+	<script th:src="@{/scripts/toast/jquery.toast.min.js}"></script>
+	<script th:src="@{/js/demo.js}"></script>
+	<script th:src="@{/js/e-magz.js}" ></script>
+	</body>
+</html>

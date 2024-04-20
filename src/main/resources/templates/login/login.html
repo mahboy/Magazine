@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<div th:replace="fragment/layout::head"></div>
+	</head>
+
+	<body>
+	<div th:replace="fragment/layout::header"></div>
+
+		<section class="login first grey">
+			<div class="container">
+				<div class="box-wrapper">				
+					<div class="box box-border">
+						<div class="box-body">
+							<h4>Login</h4>
+							<form th:action="@{/guest/login}" method="post" th:object="${users}">
+								<div class="form-group">
+									<label>Username</label>
+									<input type="text" name="username" class="form-control" th:field="*{username}">
+								</div>
+								<div class="form-group">
+									<label class="fw">Password
+										<a href="forgot.html" class="pull-right">Forgot Password?</a>
+									</label>
+									<input type="password" name="password" class="form-control" >
+								</div>
+								<div class="form-group text-right">
+									<button class="btn btn-primary btn-block">Login</button>
+								</div>
+								<tr>
+									<td>
+										<label>remember me</label>
+										<input type="checkbox" name="remember">
+									</td>
+								</tr>
+								<div class="form-group text-center">
+									<span class="text-muted">Don't have an account?</span> <a th:href="@{/guest/register}">Create one</a>
+								</div>
+								<div class="title-line">
+									or
+								</div>
+              	                    <a href="#" class="btn btn-social btn-block facebook"><i class="ion-social-facebook"></i> Login with Facebook</a>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	<div th:replace="fragment/layout::footer"></div>
+
+		<!-- JS -->
+	<!-- JS -->
+	<script th:src="@{/js/jquery.js}"></script>
+	<script th:src="@{/js/jquery.migrate.js}"></script>
+	<script th:src="@{/scripts/bootstrap/bootstrap.min.js}"></script>
+	<script>var $target_end = $(".best-of-the-week");</script>
+	<script th:src="@{/scripts/jquery-number/jquery.number.min.js}"></script>
+	<script th:src="@{/scripts/owlcarousel/dist/owl.carousel.min.js}"></script>
+	<script th:src="@{/scripts/magnific-popup/dist/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/scripts/easescroll/jquery.easeScroll.js}"></script>
+	<script th:src="@{/scripts/sweetalert/dist/sweetalert.min.js}"></script>
+	<script th:src="@{/scripts/toast/jquery.toast.min.js}"></script>
+	<script th:src="@{/js/demo.js}"></script>
+	<script th:src="@{/js/e-magz.js}" ></script>
+	</body>
+</html>

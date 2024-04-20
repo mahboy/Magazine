@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<div th:replace="fragment/layout::head"></div>
+	</head>
+
+	<body>
+	<div th:replace="fragment/layout::header"></div>
+		<section class="category">
+		  <div class="container">
+		    <div class="row">
+		      <div class="col-md-8 text-left">
+		        <div class="row">
+		          <div class="col-md-12">        
+		            <ol class="breadcrumb">
+		              <li><a href="#">Home</a></li>
+		              <li class="active">Computer</li>
+		            </ol>
+		            <h1 class="page-title">Specific Categories</h1>
+		            <p class="page-subtitle">Showing all posts with category <i>Computer</i></p>
+		          </div>
+		        </div>
+		        <div class="line"></div>
+		        <div class="row"  >
+					<article  th:each="postss : ${post}"  class="col-md-12 article-list">
+						<div class="inner">
+							<figure>
+								<a th:href="@{/single/{id}(id=${postss.getId()})}">
+									<img th:src="${postss.photo != null} ? '/images/me/' + ${postss.getPhoto()} : '/images/ad.png'">
+								</a>
+							</figure>
+							<div class="details">
+								<div class="detail">
+									<div class="category"
+                                           th:text="${postss.getSubject()}" >
+									</div>
+									<div class="time" th:text="${postss.getCreate()}"></div>
+								</div>
+								<h1  th:text="${postss.subject}"></h1>
+								<p th:text="${postss.smallBody}">
+
+								</p>
+								<footer>
+									<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>237</div></a>
+									<a class="btn btn-primary more" th:href="@{/user/post/{id}(id=${postss.getId()})}">
+										<div>More</div>
+										<div><i class="ion-ios-arrow-thin-right"></i></div>
+									</a>
+								</footer>
+							</div>
+						</div>
+					</article>
+
+		          <div class="col-md-12 text-center">
+		            <ul  class="pagination">
+						<li class="prev" th:classappend="${post.first} ? disabled" >
+						  <a th:with="url=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+								  th:href="@{${url.replaceQueryParam('page').toUriString()}(page=${post.number - 1})}">
+							  <i class="ion-ios-arrow-left"></i></a></li>
+		              <li class="active"
+						  th:classappend="${post.number == i} ? active"
+						  th:each="i : ${#numbers.sequence(0, post.totalPages - 1)}">
+						  <a  th:with="url=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+								  th:href="@{${url.replaceQueryParam('page').toUriString()}(page=${i})}">
+							  [[${i + 1}]]</a></li>
+						<li class="next" th:classappend="${post.last} ? disabled" >
+						  <a th:with="url=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+								  th:href="@{${url.replaceQueryParam('page').toUriString()}(page=${post.number + 1})}">
+							  <i class="ion-ios-arrow-right"></i></a></li>
+		            </ul>
+		            <div class="pagination-help-text">
+		            	Showing 8 results of 776 &mdash; Page 1
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		      <div class="col-md-4 sidebar">
+		        <aside>
+		          <div class="aside-body">
+		            <figure class="ads">
+			            <a href="single.html">
+			              <img th:src="@{/images/ad.png}">
+			            </a>
+		              <figcaption>Advertisement</figcaption>
+		            </figure>
+		          </div>
+		        </aside>
+		        <aside>
+		          <h1 class="aside-title">Recent Post</h1>
+		          <div class="aside-body">
+		            <article class="article-fw">
+		              <div class="inner">
+		                <figure>
+			                <a href="single.html">
+			                  <img th:src="@{/images/news/img12.jpg}">
+			                </a>
+		                </figure>
+		                <div class="details">
+		                  <h1><a href="single.html">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit</a></h1>
+		                  <p>
+		                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                    tempor incididunt ut labore et dolore magna aliqua.
+		                  </p>
+		                  <div class="detail">
+		                    <div class="time">December 26, 2016</div>
+		                    <div class="category"><a href="category.html">Lifestyle</a></div>
+		                  </div>
+		                </div>
+		              </div>
+		            </article>
+		          </div>
+		        </aside>
+				  <div class="line"></div>
+		        <aside>
+		          <div class="aside-body">
+		            <form class="newsletter">
+		              <div class="icon">
+		                <i class="ion-ios-email-outline"></i>
+		                <h1>Newsletter</h1>
+		              </div>
+		              <div class="input-group">
+		                <input type="email" class="form-control email" placeholder="Your mail">
+		                <div class="input-group-btn">
+		                  <button class="btn btn-primary"><i class="ion-paper-airplane"></i></button>
+		                </div>
+		              </div>
+		              <p>By subscribing you will receive new articles in your email.</p>
+		            </form>
+		          </div>
+		        </aside>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+
+	<div th:replace="fragment/layout::footer"></div>
+
+		<!-- JS -->
+	<!-- JS -->
+	<script th:src="@{/js/jquery.js}"></script>
+	<script th:src="@{/js/jquery.migrate.js}"></script>
+	<script th:src="@{/scripts/bootstrap/bootstrap.min.js}"></script>
+	<script>var $target_end = $(".best-of-the-week");</script>
+	<script th:src="@{/scripts/jquery-number/jquery.number.min.js}"></script>
+	<script th:src="@{/scripts/owlcarousel/dist/owl.carousel.min.js}"></script>
+	<script th:src="@{/scripts/magnific-popup/dist/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/scripts/easescroll/jquery.easeScroll.js}"></script>
+	<script th:src="@{/scripts/sweetalert/dist/sweetalert.min.js}"></script>
+	<script th:src="@{/scripts/toast/jquery.toast.min.js}"></script>
+	<script th:src="@{/js/demo.js}"></script>
+	<script th:src="@{/js/e-magz.js}" ></script>
+	</body>
+</html>
